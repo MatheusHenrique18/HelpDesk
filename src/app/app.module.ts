@@ -12,6 +12,7 @@ import { UsuarioService } from './services/usuario.service';
 import { SharedService } from './services/shared.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    NovoUsuarioComponent
   ],
   imports: [
     BrowserModule,
