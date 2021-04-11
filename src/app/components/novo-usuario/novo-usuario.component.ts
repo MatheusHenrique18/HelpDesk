@@ -19,7 +19,7 @@ export class NovoUsuarioComponent implements OnInit {
   usuario = new Usuario('', '', '', '');
   shared: SharedService;
   message: {};
-  classCSS: {};
+  classCss: {};
 
   constructor(private usuarioService: UsuarioService, private route: ActivatedRoute) {
     this.shared = SharedService.getInstance();
@@ -44,17 +44,17 @@ export class NovoUsuarioComponent implements OnInit {
     });
   }
 
-  cadastrar() {
+  cadastrar(){
     this.message = {};
-    this.usuarioService.createOrUpdate(this.usuario).subscribe((responseApi: ResponseApi) => {
-      this.usuario = new Usuario('', '', '', '');
-      let usuarioRetorno: Usuario = responseApi.data;
-      this.form.resetForm();
-      this.showMessage({
-        type: 'success',
-        text: `${usuarioRetorno.email} Registrado com sucesso!`
-      });
-    }, err => {
+    this.usuarioService.createOrUpdate(this.usuario).subscribe((responseApi:ResponseApi) => {
+        this.usuario = new Usuario(null,'','','');
+        let usuarioRetorno : Usuario = responseApi.data;
+        this.form.resetForm();
+        this.showMessage({
+          type: 'success',
+          text: `Usuário ${usuarioRetorno.email} cadastrado com sucesso`
+        });
+    } , err => {
       this.showMessage({
         type: 'error',
         text: err['error']['errors'][0]
@@ -62,19 +62,19 @@ export class NovoUsuarioComponent implements OnInit {
     });
   }
 
-  private showMessage(message: { type: string, text: string }): void {
+  private showMessage(message: {type: string, text: string}): void {
     this.message = message;
     this.buildClasses(message.type);
     setTimeout(() => {
       this.message = undefined;
-    }, 3000);
-  }
+    }, 5000);
+}
 
   private buildClasses(type: string): void {
-    this.classCSS = {
-      'alert': true
-    }
-    this.classCSS['alert-' + type] = true;
+     this.classCss = {
+       'alert': true
+     }
+     this.classCss['alert-'+type] = true;
   }
 
   getFromGroupClass(isInvalid: boolean, isDirty): {} {
