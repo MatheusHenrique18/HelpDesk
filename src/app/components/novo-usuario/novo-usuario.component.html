@@ -42,6 +42,7 @@
                     #perfil="ngModel"
                     style="width: 100%;"
                     required>
+                    <option value="" selected disabled hidden>--SELECIONE--</option>
                     <option>ROLE_ADMIN</option>
                     <option>ROLE_TECNICO</option>
                     <option>ROLE_CLIENTE</option>
@@ -53,7 +54,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
+          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar <i class="fa fa-save"></i></button>
         </div>
         <!-- /.box-footer -->
       </form>
