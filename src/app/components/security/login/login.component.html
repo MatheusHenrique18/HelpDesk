@@ -1,7 +1,7 @@
 <div class="col-md-4" style="margin-left: 35%; margin-top: 15%;">
     <!-- Horizontal Form -->
     <div class="box box-info">
-      <div class="box-header with-border">
+      <div class="box-header with-border" style="text-align: center;">
         <h3 class="box-title">HelpDesk | Login</h3>
       </div>
       <!-- /.box-header -->
@@ -34,8 +34,8 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button type="submit" (click)="cancelLogin()" class="btn btn-default">Cancelar</button>
-          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Entrar</button>
+          <!-- <button type="submit" (click)="cancelLogin()" class="btn btn-default">Cancelar</button> -->
+          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right" style="width: 100%;">Entrar</button>
         </div>
         <!-- /.box-footer -->
       </form>
