@@ -15,6 +15,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.component';
 import { AuthGuard } from './components/security/auth.guard';
+import { ListaUsuarioComponent } from './components/lista-usuario/lista-usuario.component';
+import { DialogService } from './dialog.servcice';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AuthGuard } from './components/security/auth.guard';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    NovoUsuarioComponent
+    NovoUsuarioComponent,
+    ListaUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { AuthGuard } from './components/security/auth.guard';
   providers: [
     UsuarioService,
     SharedService,
+    DialogService
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
