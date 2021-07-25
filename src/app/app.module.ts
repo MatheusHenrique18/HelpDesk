@@ -38,7 +38,7 @@ import { DialogService } from './dialog.servcice';
   providers: [
     UsuarioService,
     SharedService,
-    DialogService
+    DialogService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,1 +1,37 @@
-<p>lista-usuario works!</p>
+<div [ngClass]="classCss" role="alert" *ngIf="message">
+    <strong>{{ message.text }}</strong>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Usuários</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Email</th>
+                        <th>Perfil</th>
+                        <th style="width: 70px">&nbsp;</th>
+                        <th style="width: 70px">&nbsp;</th>
+                    </tr>
+                    <tr *ngFor="let usuario of listaUsuarios" style="height: 45px;">
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.perfil }}</td>
+                        <td><button class="btn btn-primary" (click)="edit(usuario.id)">Editar</button></td>
+                        <td><button class="btn btn-danger" (click)="delete(usuario.id)">Excluir</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="" (click)="setPreviousPage($event)"> << </a></li>
+                    <li *ngFor="let p of pages; let i=index">
+                        <a [ngClass]="{'pagination-focus' : i == page}" href="" (click)="setPage(i, $event)">{{ i+1 }}</a>
+                    </li>
+                    <li><a href="" (click)="setNextPage($event)"> >> </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

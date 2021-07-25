@@ -69,6 +69,28 @@ export class ListaUsuarioComponent implements OnInit {
     });
   }
 
+  setNextPage(event: any){
+    event.preventDefault();
+    if(this.page + 1 < this.pages.length){
+      this.page = this.page + 1;
+      this.findAll(this.page, this.count);
+    }
+  }
+
+  setPreviousPage(event: any){
+    event.preventDefault();
+    if(this.page > 0){
+      this.page = this.page - 1;
+      this.findAll(this.page, this.count);
+    }
+  }
+
+  setPage(i, event: any){
+    event.preventDefault();
+      this.page = i;
+      this.findAll(this.page, this.count);
+  }
+
   private showMessage(message: {type: string, text: string}): void {
     this.message = message;
     this.buildClasses(message.type);
