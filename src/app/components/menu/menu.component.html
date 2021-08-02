@@ -3,7 +3,7 @@
       <ul class="sidebar-menu" data-widget="tree">
 
         <!-- MENU USUÁRIOS -->
-        <li class="treeview">
+        <li class="treeview" *ngIf="shared.usuario.perfil == 'ADMIN'">
           <a href="#">
             <i class="fa fa-users"></i> <span>Usuários</span>
             <span class="pull-right-container">
@@ -17,7 +17,7 @@
         </li>
 
         <!-- MENU CHAMADOS -->
-        <li class="treeview">
+        <li class="treeview" *ngIf="shared.usuario.perfil != 'ADMIN'">
             <a href="#">
               <i class="fa fa-edit"></i> <span>Chamados</span>
               <span class="pull-right-container">
@@ -25,8 +25,8 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="pages/forms/general.html"><i class="fa fa-list"></i> Listar </a></li>
-              <li><a [routerLink]="['/novo-chamado']"><i class="fa fa-plus"></i> Novo </a></li>
+              <li><a [routerLink]="['/lista-chamado']"><i class="fa fa-list"></i> Listar </a></li>
+              <li *ngIf="shared.usuario.perfil == 'TECNICO'"><a [routerLink]="['/novo-chamado']"><i class="fa fa-plus"></i> Novo </a></li>
             </ul>
           </li>
 
@@ -39,7 +39,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="pages/forms/general.html"><i class="fa fa-eye"></i> Visualizar </a></li>
+              <li><a [routerLink]="['/resumo']"><i class="fa fa-eye"></i> Visualizar </a></li>
             </ul>
           </li>
       </ul>
