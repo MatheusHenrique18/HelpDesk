@@ -1,15 +1,12 @@
-<div class="col-md-6" style="margin-left: 30%; margin-top: 15%;">
-    <!-- Horizontal Form -->
+<div [ngClass]="classCss" role="alert" *ngIf="message">
+  <strong>{{ message.text }}</strong>
+</div>
+<div class="col-md-6">
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title">Novo Usuário</h3>
       </div>
-      <!-- /.box-header -->
-      <!-- form start -->
       <form class="form-horizontal" #form="ngForm" (ngSubmit)="cadastrar()">
-          <div [ngClass]="classCss" role="alert" *ngIf="message">
-            <strong>{{ message.text }}</strong>
-          </div>
 
         <div class="box-body">
 
@@ -52,11 +49,9 @@
           </div>
           
         </div>
-        <!-- /.box-body -->
         <div class="box-footer">
           <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar <i class="fa fa-save"></i></button>
         </div>
-        <!-- /.box-footer -->
       </form>
     </div>
 </div>

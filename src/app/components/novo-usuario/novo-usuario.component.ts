@@ -52,7 +52,7 @@ export class NovoUsuarioComponent implements OnInit {
         this.form.resetForm();
         this.showMessage({
           type: 'success',
-          text: `Usuário ${usuarioRetorno.email} cadastrado com sucesso`
+          text: `Usuário: "${usuarioRetorno.email}" cadastrado com sucesso`
         });
     } , err => {
       this.showMessage({
@@ -68,7 +68,7 @@ export class NovoUsuarioComponent implements OnInit {
     setTimeout(() => {
       this.message = undefined;
     }, 5000);
-}
+  }
 
   private buildClasses(type: string): void {
      this.classCss = {

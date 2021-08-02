@@ -5,13 +5,15 @@ import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.com
 import { ListaUsuarioComponent } from './components/lista-usuario/lista-usuario.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { AuthGuard } from './components/security/auth.guard';
+import { NovoChamadoComponent } from './components/novo-chamado/novo-chamado.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'novo-usuario', component: NovoUsuarioComponent, canActivate: [AuthGuard]},
   {path: 'novo-usuario/:id', component: NovoUsuarioComponent, canActivate: [AuthGuard]},
-  {path: 'lista-usuario', component: ListaUsuarioComponent, canActivate: [AuthGuard]}
+  {path: 'lista-usuario', component: ListaUsuarioComponent, canActivate: [AuthGuard]},
+  {path: 'novo-chamado', component: NovoChamadoComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

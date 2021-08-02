@@ -17,6 +17,8 @@ import { NovoUsuarioComponent } from './components/novo-usuario/novo-usuario.com
 import { AuthGuard } from './components/security/auth.guard';
 import { ListaUsuarioComponent } from './components/lista-usuario/lista-usuario.component';
 import { DialogService } from './dialog.servcice';
+import { NovoChamadoComponent } from './components/novo-chamado/novo-chamado.component';
+import { ChamadoService } from './services/chamado.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { DialogService } from './dialog.servcice';
     HomeComponent,
     LoginComponent,
     NovoUsuarioComponent,
-    ListaUsuarioComponent
+    ListaUsuarioComponent,
+    NovoChamadoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { DialogService } from './dialog.servcice';
   ],
   providers: [
     UsuarioService,
+    ChamadoService,
     SharedService,
     DialogService,
     AuthGuard,
