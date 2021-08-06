@@ -1,0 +1,122 @@
+<div [ngClass]="classCss" role="alert" *ngIf="message">
+    <strong>{{ message.text }}</strong>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Chamados</h3>
+            </div>
+            
+            <div class="box-body">
+                <div class="form-group" *ngIf="shared.usuario.perfil == 'TECNICO'">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" [(ngModel)]="designadoParaMim" name="designadoParaMim" id="designadoParaMim">
+                            <b>Designado para mim</b>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputNumero" class="col-sm-2 control-label">Número: </label>
+                    <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="filtroChamado.numero" class="form-control" name="inputNumero" id="inputNumero">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputTitulo" class="col-sm-2 control-label">Título: </label>
+                    <div class="col-sm-10">
+                        <input type="text" [(ngModel)]="filtroChamado.titulo" class="form-control" name="inputTitulo" id="inputTitulo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputStatus" class="col-sm-2 control-label">Status: </label>
+                    <div class="col-sm-10">
+                        <select [(ngModel)]="filtroChamado.status" 
+                                class="form-control" 
+                                name="inputStatus" 
+                                id="inputStatus" 
+                                style="width: 100%;">
+                                <option value="" selected disabled hidden>--SELECIONE--</option>
+                                <option>NOVO</option>
+                                <option>DESIGNADO</option>
+                                <option>RESOLVIDO</option>
+                                <option>APROVADO</option>
+                                <option>REPROVADO</option>
+                                <option>FECHADO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPrioridade" class="col-sm-2 control-label">Prioridade: </label>
+                    <div class="col-sm-10">
+                        <select [(ngModel)]="filtroChamado.prioridade" 
+                                class="form-control" 
+                                name="inputPrioridade" 
+                                id="inputPrioridade" 
+                                style="width: 100%;">
+                                <option value="" selected disabled hidden>--SELECIONE--</option>
+                                <option>ALTA</option>
+                                <option>NORMAL</option>
+                                <option>BAIXA</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button class="btn btn-info pull-right" (click)="limparFiltro()"><i class="fa fa-eraser"></i> Limpar Filtro </button>
+                <button class="btn btn-info pull-right" (click)="filtrar()" style="margin-right: 10px;"><i class="fa fa-filter"></i> Filtrar </button>
+            </div>
+
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Numero</th>
+                        <th>Título</th>
+                        <th>Prioridade</th>
+                        <th>Status</th>
+                        <th>Criado Por</th>
+                        <th style="width: 70px" *ngIf="shared.usuario.perfil == 'CLIENTE'">&nbsp;</th>
+                        <th style="width: 70px" *ngIf="shared.usuario.perfil == 'CLIENTE'">&nbsp;</th>
+                        <th style="width: 70px">&nbsp;</th>
+                    </tr>
+                    <tr *ngFor="let chamado of listaChamado" style="height: 45px;">
+                        <td>{{ chamado.numero }}</td>
+                        <td>{{ chamado.titulo }}</td>
+                        <td>{{ chamado.prioridade }}</td>
+                        <td>{{ chamado.status }}</td>
+                        <td>{{ chamado.usuario.email }}</td>
+
+                        <td>
+                            <button class="btn btn-success" (click)="detalhar(chamado.id)">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                Detalhar
+                            </button>
+                        </td>
+                        <td *ngIf="shared.usuario.perfil == 'CLIENTE'">
+                            <button class="btn btn-primary" (click)="editar(chamado.id)" style="margin-right: 10px;">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
+                                Editar
+                            </button>
+                        </td>
+                        <td *ngIf="shared.usuario.perfil == 'CLIENTE'">
+                            <button class="btn btn-danger" (click)="delete(chamado.id)" style="margin-right: 10px;">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                Excluir
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="" (click)="setPreviousPage($event)"> << </a></li>
+                    <li *ngFor="let p of pages; let i=index">
+                        <a [ngClass]="{'pagination-focus' : i == page}" href="" (click)="setPage(i, $event)">{{ i+1 }}</a>
+                    </li>
+                    <li><a href="" (click)="setNextPage($event)"> >> </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -37,7 +37,7 @@ export class ListaUsuarioComponent implements OnInit {
   }
 
   delete(id: string){
-    this.dialogService.confirm('Confirma a exclusão deste usuário ?')
+    this.dialogService.confirm('Confirma a exclusão deste Usuário ?')
       .then((podeDeletar: boolean) => {
         if(podeDeletar){
           this.message = {};
@@ -97,7 +97,7 @@ export class ListaUsuarioComponent implements OnInit {
     setTimeout(() => {
       this.message = undefined;
     }, 5000);
-}
+  }
 
   private buildClasses(type: string): void {
      this.classCss = {

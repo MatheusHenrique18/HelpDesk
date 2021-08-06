@@ -1,47 +1,70 @@
 <aside class="main-sidebar">
-    <section class="sidebar">
-      <ul class="sidebar-menu" data-widget="tree">
+  <section class="sidebar">
+    <ul class="sidebar-menu" data-widget="tree">
 
-        <!-- MENU USUÁRIOS -->
-        <li class="treeview" *ngIf="shared.usuario.perfil == 'ADMIN'">
-          <a href="#">
-            <i class="fa fa-users"></i> <span>Usuários</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a [routerLink]="['/lista-usuario']"><i class="fa fa-list"></i> Listar </a></li>
-            <li><a [routerLink]="['/novo-usuario']"><i class="fa fa-plus"></i> Novo </a></li>
-          </ul>
-        </li>
-
-        <!-- MENU CHAMADOS -->
-        <li class="treeview" *ngIf="shared.usuario.perfil != 'ADMIN'">
-            <a href="#">
-              <i class="fa fa-edit"></i> <span>Chamados</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+      <!-- MENU USUÁRIOS -->
+      <li class="treeview" *ngIf="shared.usuario.perfil == 'ADMIN'">
+        <a href="#">
+          <i class="fa fa-users fa-lg"></i>
+          <span class="pull-middle-container">&nbsp;&nbsp;&nbsp;Usuários</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a [routerLink]="['/lista-usuario']">&nbsp;&nbsp;&nbsp;
+              <i class="fa fa-list fa-lg"></i>&nbsp;&nbsp;&nbsp; Listar
             </a>
-            <ul class="treeview-menu">
-              <li><a [routerLink]="['/lista-chamado']"><i class="fa fa-list"></i> Listar </a></li>
-              <li *ngIf="shared.usuario.perfil == 'TECNICO'"><a [routerLink]="['/novo-chamado']"><i class="fa fa-plus"></i> Novo </a></li>
-            </ul>
           </li>
-
-          <!-- MENU RESUMO -->
-        <li class="treeview">
-            <a href="#">
-              <i class="fa fa-bar-chart"></i> <span>Resumo</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+          <li>
+            <a [routerLink]="['/novo-usuario']">&nbsp;&nbsp;&nbsp;
+              <i class="fa fa-plus fa-lg"></i>&nbsp;&nbsp;&nbsp; Novo
             </a>
-            <ul class="treeview-menu">
-              <li><a [routerLink]="['/resumo']"><i class="fa fa-eye"></i> Visualizar </a></li>
-            </ul>
           </li>
-      </ul>
-    </section>
-  </aside>
+        </ul>
+      </li>
+
+      <!-- MENU CHAMADOS -->
+      <li class="treeview" *ngIf="shared.usuario.perfil != 'ADMIN'">
+        <a href="#">
+          <i class="fa fa-edit fa-lg"></i>
+          <span>&nbsp;&nbsp;&nbsp; Chamados </span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a [routerLink]="['/lista-chamado']">&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-list fa-lg"></i>&nbsp;&nbsp;&nbsp; Listar
+              </a>
+          </li>
+          <li *ngIf="shared.usuario.perfil == 'TECNICO'">
+            <a [routerLink]="['/novo-chamado']">&nbsp;&nbsp;&nbsp;
+              <i class="fa fa-plus fa-lg"></i>&nbsp;&nbsp;&nbsp; Novo
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- MENU RESUMO -->
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-bar-chart fa-lg"></i>
+          <span>&nbsp;&nbsp;&nbsp; Resumo </span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a [routerLink]="['/resumo']">&nbsp;&nbsp;&nbsp;
+              <i class="fa fa-eye fa-lg"></i>
+              &nbsp;&nbsp;&nbsp; Visualizar
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</aside>
