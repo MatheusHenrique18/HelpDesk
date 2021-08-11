@@ -7,6 +7,7 @@ import { LoginComponent } from './components/security/login/login.component';
 import { AuthGuard } from './components/security/auth.guard';
 import { NovoChamadoComponent } from './components/novo-chamado/novo-chamado.component';
 import { ListaChamadoComponent } from './components/lista-chamado/lista-chamado.component';
+import { DetalhaChamadoComponent } from './components/detalha-chamado/detalha-chamado.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'lista-usuario', component: ListaUsuarioComponent, canActivate: [AuthGuard]},
   {path: 'novo-chamado', component: NovoChamadoComponent, canActivate: [AuthGuard]},
   {path: 'novo-chamado/:id', component: NovoChamadoComponent, canActivate: [AuthGuard]},
-  {path: 'lista-chamado', component: ListaChamadoComponent, canActivate: [AuthGuard]}
+  {path: 'lista-chamado', component: ListaChamadoComponent, canActivate: [AuthGuard]},
+  {path: 'detalha-chamado/:id', component: DetalhaChamadoComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

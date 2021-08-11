@@ -52,8 +52,8 @@ export class ListaChamadoComponent implements OnInit {
     this.count = 5;
     this.chamadoService.findByParams(this.page, this.count, this.designadoParaMim, this.filtroChamado)
       .subscribe((responseApi: ResponseApi)=> {
-        this.filtroChamado.titulo = this.filtroChamado.titulo === 'uninformed' ? '' : this.filtroChamado.titulo;
-        this.filtroChamado.numero = this.filtroChamado.numero === 0 ? null : this.filtroChamado.numero;
+        this.filtroChamado.titulo = this.filtroChamado.titulo == 'uninformed' ? '' : this.filtroChamado.titulo;
+        this.filtroChamado.numero = this.filtroChamado.numero == 0 ? null : this.filtroChamado.numero;
         this.listaChamado = responseApi['data']['content'];
         this.pages = new Array(responseApi['data']['content']);
       }, err => {

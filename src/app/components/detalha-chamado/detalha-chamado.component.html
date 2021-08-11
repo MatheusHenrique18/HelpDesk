@@ -1,0 +1,71 @@
+<div [ngClass]="classCss" role="alert" *ngIf="message">
+    <strong>{{ message.text }}</strong>
+</div>
+<div class="col-md-10" style="margin-left: 0%;">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Chamado</h3>
+        </div>
+        <form class="form-horizontal">
+            <div class="box-body">
+                <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                        <b>Número: </b><span>{{ chamado.numero }}</span>
+                        <span class="pull-right"> <b>Título: </b><span>{{ chamado.titulo }}</span> </span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Prioridade: </b><span>{{ chamado.prioridade }}</span>
+                        <span class="pull-right"> <b>Criado Por: </b><span>{{ chamado?.usuario?.email }}</span> </span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Status: </b><span>{{ chamado.status }}</span>
+                        <span class="pull-right"> <b>Assinado Por: </b><span>{{ chamado?.usuarioDesignado?.email }}</span> </span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Data: </b><span>{{ chamado.data | date:'dd/MM/yyyy' }}</span>
+                        <span class="pull-right"> <b>Descrição: </b><span>{{ chamado.descricao }}</span> </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span><img [src]="chamado.imagem" width="450px" height="370px"></span>
+                        <span class="pull-right">
+                            <table class="table caption-top table-hover">
+                                <caption><h4>Histórico do Chamado: </h4></caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> Usuário </th>
+                                        <th scope="col"> Data </th>
+                                        <th scope="col"> Status </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let mudanca of chamado.historicoStatus">
+                                        <td> {{mudanca?.usuarioAlteraStatus.email}} </td>
+                                        <td> {{mudanca?.dataAlteraStatus | date:'dd/MM/yyyy HH:mm:ss'}} </td>
+                                        <td> {{mudanca?.status}} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-footer">
+                <button (click)="changeStatus('DESIGNADO')" class="btn btn-primary" *ngIf="shared.usuario.perfil == 'TECNICO' && chamado.status == 'NOVO'">
+                    Assinar
+                </button>
+                <button (click)="changeStatus('RESOLVIDO')" class="btn btn-primary" *ngIf="shared.usuario.perfil == 'TECNICO' && (chamado.status == 'DESIGNADO' || chamado.status == 'REPROVADO')">
+                    Resolver
+                </button>
+                <button (click)="changeStatus('APROVADO')" class="btn btn-success" *ngIf="shared.usuario.perfil == 'CLIENTE' && chamado.status == 'RESOLVIDO'">
+                    <i class="fa fa-smile-o" aria-hidden="true"></i> Aprovar
+                </button>
+                <button (click)="changeStatus('REPROVADO')" class="btn btn-danger" *ngIf="shared.usuario.perfil == 'CLIENTE' && chamado.status == 'RESOLVIDO'">
+                    <i class="fa fa-frown-o" aria-hidden="true"></i> Reprovar
+                </button>
+                <button (click)="changeStatus('FECHADO')" class="btn btn-danger" *ngIf="shared.usuario.perfil == 'TECNICO' && chamado.status == 'APROVADO'">
+                    <i class="fa fa-check" aria-hidden="true"></i> Fechar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

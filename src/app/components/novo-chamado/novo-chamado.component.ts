@@ -16,7 +16,7 @@ export class NovoChamadoComponent implements OnInit {
   @ViewChild("form")
   form: NgForm
 
-  chamado = new Chamado('', null, '', '', 0, 'NOVO', '', null, '', '', null);
+  chamado = new Chamado('', null, '', '', null, '', '', null, '', '', null);
   shared: SharedService;
   message: {};
   classCss: {};
@@ -50,7 +50,7 @@ export class NovoChamadoComponent implements OnInit {
   cadastrar(){
     this.message = {};
     this.chamadoService.createOrUpdate(this.chamado).subscribe((responseApi:ResponseApi) => {
-        this.chamado = new Chamado('', null, '', '', 0, 'NOVO', '', null, '', '', null);
+        this.chamado = new Chamado('', null, '', '', null, '', '', null, '', '', null);
         let chamadoRetorno : Chamado = responseApi.data;
         this.form.resetForm();
         this.showMessage({

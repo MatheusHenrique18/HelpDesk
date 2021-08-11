@@ -14,8 +14,7 @@ export class ChamadoService {
     if(chamado.id != null && chamado.id != ''){
       return this.http.put(`${HELP_DESK_API}/api/chamado`, chamado);
     }else{
-      chamado.id = null;
-      chamado.id = 'NOVO'
+      chamado.status = 'NOVO';
       return this.http.post(`${HELP_DESK_API}/api/chamado`, chamado);
     }
   }
