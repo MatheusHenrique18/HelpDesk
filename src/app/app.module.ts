@@ -21,6 +21,7 @@ import { NovoChamadoComponent } from './components/novo-chamado/novo-chamado.com
 import { ChamadoService } from './services/chamado.service';
 import { ListaChamadoComponent } from './components/lista-chamado/lista-chamado.component';
 import { DetalhaChamadoComponent } from './components/detalha-chamado/detalha-chamado.component';
+import { ContadoresComponent } from './components/contadores/contadores.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DetalhaChamadoComponent } from './components/detalha-chamado/detalha-ch
     ListaUsuarioComponent,
     NovoChamadoComponent,
     ListaChamadoComponent,
-    DetalhaChamadoComponent
+    DetalhaChamadoComponent,
+    ContadoresComponent
   ],
   imports: [
     BrowserModule,

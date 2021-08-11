@@ -1,0 +1,38 @@
+<div [ngClass]="classCss" role="alert" *ngIf="message">
+    <strong>{{ message.text }}</strong>
+</div>
+<div class="col-md-6" style="margin-left: 0%;">
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Contadores</h3>
+        </div>
+        <div class="box-body">
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    <b> Novos </b>
+                    <span class="pull-right"> {{ contadores?.chamadosNovos }} </span>
+                </li>
+                <li class="list-group-item">
+                    <b> Assinados </b>
+                    <span class="pull-right"> {{ contadores?.chamadosDesignados }} </span>
+                </li>
+                <li class="list-group-item">
+                    <b> Resolvidos </b>
+                    <span class="pull-right"> {{ contadores?.chamadosResolvidos }} </span>
+                </li>
+                <li class="list-group-item">
+                    <b> Aprovados </b>
+                    <span class="pull-right"> {{ contadores?.chamadosAprovados }} </span>
+                </li>
+                <li class="list-group-item">
+                    <b> Reprovados </b>
+                    <span class="pull-right"> {{ contadores?.chamadosReprovados }} </span>
+                </li>
+                <li class="list-group-item">
+                    <b> Fechados </b>
+                    <span class="pull-right"> {{ contadores?.chamadosFechados }} </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
