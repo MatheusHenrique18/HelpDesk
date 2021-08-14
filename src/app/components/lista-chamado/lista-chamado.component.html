@@ -64,48 +64,47 @@
                 </div>
             </div>
             <div class="box-footer">
-                <button class="btn btn-info pull-right" (click)="limparFiltro()"><i class="fa fa-eraser"></i> Limpar Filtro </button>
-                <button class="btn btn-info pull-right" (click)="filtrar()" style="margin-right: 10px;"><i class="fa fa-filter"></i> Filtrar </button>
+                <button class="btn btn-primary pull-right" (click)="limparFiltro()"><i class="fa fa-eraser"></i> Limpar Filtro </button>
+                <button class="btn btn-primary pull-right" (click)="filtrar()" style="margin-right: 10px;"><i class="fa fa-filter"></i> Filtrar </button>
             </div>
 
             <div class="box-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Número</th>
-                        <th>Título</th>
-                        <th>Prioridade</th>
-                        <th>Status</th>
-                        <th>Criado Por</th>
-                        <th style="width: 70px" *ngIf="shared.usuario.perfil == 'CLIENTE'">&nbsp;</th>
-                        <th style="width: 70px" *ngIf="shared.usuario.perfil == 'CLIENTE'">&nbsp;</th>
-                        <th style="width: 70px">&nbsp;</th>
-                    </tr>
-                    <tr *ngFor="let chamado of listaChamado" style="height: 45px;">
-                        <td>{{ chamado.numero }}</td>
-                        <td>{{ chamado.titulo }}</td>
-                        <td>{{ chamado.prioridade }}</td>
-                        <td>{{ chamado.status }}</td>
-                        <td>{{ chamado.usuario.email }}</td>
-
-                        <td>
-                            <button class="btn btn-success" (click)="detalhar(chamado.id)" style="margin-right: 10px;">
-                                <i class="fa fa-search-plus" aria-hidden="true"></i>
-                                Detalhar
-                            </button>
-                        </td>
-                        <td *ngIf="shared.usuario.perfil == 'CLIENTE'">
-                            <button class="btn btn-primary" (click)="editar(chamado.id)" style="margin-right: 10px;">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 
-                                Editar
-                            </button>
-                        </td>
-                        <td *ngIf="shared.usuario.perfil == 'CLIENTE'">
-                            <button class="btn btn-danger" (click)="delete(chamado.id)" style="margin-right: 10px;">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                Excluir
-                            </button>
-                        </td>
-                    </tr>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Prioridade</th>
+                            <th>Status</th>
+                            <th>Título</th>
+                            <th>Criado Por</th>
+                            <th style="width: 60px" *ngIf="shared.usuario.perfil == 'CLIENTE'"></th>
+                            <th style="width: 60px" *ngIf="shared.usuario.perfil == 'CLIENTE'"></th>
+                            <th style="width: 60px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let chamado of listaChamado">
+                            <td>{{ chamado.numero }}</td>
+                            <td>
+                                <i class="fa fa-battery-full fa-rotate-270" style="color: tomato;" aria-hidden="true" *ngIf="chamado.prioridade == 'ALTA'"></i>
+                                <i class="fa fa-battery-half fa-rotate-270" style="color: gold;" aria-hidden="true" *ngIf="chamado.prioridade == 'NORMAL'"></i>
+                                <i class="fa fa-battery-quarter fa-rotate-270" style="color: lightblue;" aria-hidden="true" *ngIf="chamado.prioridade == 'BAIXA'"></i>
+                                {{ chamado.prioridade }}
+                            </td>
+                            <td>{{ chamado.status }}</td>
+                            <td>{{ chamado.titulo }}</td>
+                            <td>{{ chamado.usuario.email }}</td>
+                            <td>
+                                <i class="fa fa-search-plus fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Detalhar" style="cursor: pointer;" (click)="detalhar(chamado.id)"></i>
+                            </td>
+                            <td *ngIf="shared.usuario.perfil == 'CLIENTE'">
+                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Editar" style="cursor: pointer;" (click)="editar(chamado.id)"></i>
+                            </td>
+                            <td *ngIf="shared.usuario.perfil == 'CLIENTE'">
+                                <i class="fa fa-trash fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Excluir" style="cursor: pointer;" (click)="delete(chamado.id)"></i>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div class="box-footer clearfix">
