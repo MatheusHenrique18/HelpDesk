@@ -15,7 +15,7 @@ export class ListaChamadoComponent implements OnInit {
 
   designadoParaMim: boolean = false;
   page: number = 0;
-  count: number = 5;
+  count: number = 10;
   pages: Array<number>;
   shared: SharedService;
   message: {};
@@ -49,7 +49,7 @@ export class ListaChamadoComponent implements OnInit {
 
   filtrar(){
     this.page = 0;
-    this.count = 5;
+    this.count = 10;
     this.chamadoService.findByParams(this.page, this.count, this.designadoParaMim, this.filtroChamado)
       .subscribe((responseApi: ResponseApi)=> {
         this.filtroChamado.titulo = this.filtroChamado.titulo == 'uninformed' ? '' : this.filtroChamado.titulo;
@@ -67,7 +67,7 @@ export class ListaChamadoComponent implements OnInit {
   limparFiltro(){
     this.designadoParaMim = false;
     this.page = 0;
-    this.count = 5;
+    this.count = 10;
     this.filtroChamado = new Chamado('', null, '', '', null, '', '', null, '', '', null);
     this.findAll(this.page, this.count);
   }

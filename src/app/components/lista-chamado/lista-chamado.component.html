@@ -86,12 +86,19 @@
                         <tr *ngFor="let chamado of listaChamado">
                             <td>{{ chamado.numero }}</td>
                             <td>
-                                <i class="fa fa-battery-full fa-rotate-270" style="color: tomato;" aria-hidden="true" *ngIf="chamado.prioridade == 'ALTA'"></i>
-                                <i class="fa fa-battery-half fa-rotate-270" style="color: gold;" aria-hidden="true" *ngIf="chamado.prioridade == 'NORMAL'"></i>
-                                <i class="fa fa-battery-quarter fa-rotate-270" style="color: lightblue;" aria-hidden="true" *ngIf="chamado.prioridade == 'BAIXA'"></i>
+                                <i class="fa fa-battery-full fa-rotate-270 fa-lg" style="color: tomato;" aria-hidden="true" *ngIf="chamado.prioridade == 'ALTA'"></i>
+                                <i class="fa fa-battery-half fa-rotate-270 fa-lg" aria-hidden="true" *ngIf="chamado.prioridade == 'NORMAL'"></i>
+                                <i class="fa fa-battery-quarter fa-rotate-270 fa-lg" aria-hidden="true" *ngIf="chamado.prioridade == 'BAIXA'"></i>
                                 {{ chamado.prioridade }}
                             </td>
-                            <td>{{ chamado.status }}</td>
+                            <td>
+                                <span class="label label-primary" *ngIf="chamado.status == 'NOVO'">{{ chamado.status }}</span>
+                                <span class="label label-info" *ngIf="chamado.status == 'DESIGNADO'">{{ chamado.status }}</span>
+                                <span class="label label-warning" *ngIf="chamado.status == 'RESOLVIDO'">{{ chamado.status }}</span>
+                                <span class="label label-success" *ngIf="chamado.status == 'APROVADO'">{{ chamado.status }}</span>
+                                <span class="label label-danger" *ngIf="chamado.status == 'REPROVADO'">{{ chamado.status }}</span>
+                                <span class="label label-default" *ngIf="chamado.status == 'FECHADO'">{{ chamado.status }}</span>
+                            </td>
                             <td>{{ chamado.titulo }}</td>
                             <td>{{ chamado.usuario.email }}</td>
                             <td>
@@ -109,11 +116,11 @@
             </div>
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="" (click)="setPreviousPage($event)"> << </a></li>
+                    <li><a href="" (click)="setPreviousPage($event)"> « </a></li>
                     <li *ngFor="let p of pages; let i=index">
                         <a [ngClass]="{'pagination-focus' : i == page}" href="" (click)="setPage(i, $event)">{{ i+1 }}</a>
                     </li>
-                    <li><a href="" (click)="setNextPage($event)"> >> </a></li>
+                    <li><a href="" (click)="setNextPage($event)"> » </a></li>
                 </ul>
             </div>
         </div>
