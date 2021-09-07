@@ -108,7 +108,8 @@
                                 <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Editar" style="cursor: pointer;" (click)="editar(chamado.id)"></i>
                             </td>
                             <td *ngIf="shared.usuario.perfil == 'CLIENTE'">
-                                <i class="fa fa-trash fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Excluir" style="cursor: pointer;" (click)="delete(chamado.id)"></i>
+                                <i class="fa fa-trash fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Excluir" style="cursor: pointer;" 
+                                        data-toggle="modal" data-target="#modalExclusaoChamado" (click)="selecionaExcluir(chamado)"></i>
                             </td>
                         </tr>
                     </tbody>
@@ -124,5 +125,44 @@
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+
+                                
+<div class="modal fade" id="modalExclusaoChamado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-exclamation-circle fa-lg"
+                            aria-hidden="true"></i>&nbsp; Atenção</h4>
+                </div>
+                <div class="modal-body">
+
+                    <h5>Confirma a exclusão do seguinte Chamado ?</h5>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6"><p><b>Número: </b>{{ chamadoSelecionado?.numero }}</p></div>
+                        <div class="col-md-6"><p><b>Prioridade: </b>{{ chamadoSelecionado?.prioridade }}</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><p><b>Status: </b>{{ chamadoSelecionado?.status }}</p></div>
+                        <div class="col-md-6"><p><b>Título: </b>{{ chamadoSelecionado?.titulo }}</p></div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fa fa-times" aria-hidden="true"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="delete(chamadoSelecionado.id)" data-dismiss="modal">
+                        <i class="fa fa-check" aria-hidden="true"></i> Confirmar
+                    </button>
+                </div>
+            </div>
     </div>
 </div>

@@ -22,6 +22,7 @@ export class ListaChamadoComponent implements OnInit {
   classCss: {};
   listaChamado = [];
   filtroChamado = new Chamado('', null, '', '', null, '', '', null, '', '', null);
+  chamadoSelecionado: Chamado;
 
   constructor(
     private dialogService: DialogService,
@@ -80,10 +81,12 @@ export class ListaChamadoComponent implements OnInit {
     this.router.navigate(['/detalha-chamado', id]);
   }
 
+  selecionaExcluir(chamado: Chamado){
+    this.chamadoSelecionado = chamado;
+    console.log("***chamadoSelecionado", this.chamadoSelecionado);
+  }
+
   delete(id: string){
-    this.dialogService.confirm('Confirma a exclusão deste Chamado ?')
-      .then((podeDeletar: boolean) => {
-        if(podeDeletar){
           this.message = {};
           this.chamadoService.delete(id).subscribe((responseApi: ResponseApi) => {
             this.showMessage({
@@ -97,8 +100,6 @@ export class ListaChamadoComponent implements OnInit {
               text: err['error']['errors'][0]
             });
           });
-        }
-      })
   }
 
   setNextPage(event: any){
