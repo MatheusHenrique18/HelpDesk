@@ -1,3 +1,4 @@
+import { Usuario } from 'src/app/model/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResponseApi } from 'src/app/model/response-api';
@@ -19,6 +20,7 @@ export class ListaUsuarioComponent implements OnInit {
   message: {};
   classCss: {};
   listaUsuarios = [];
+  usuarioSelecionado: Usuario;
 
   constructor(
     private dialogService: DialogService,
@@ -32,14 +34,16 @@ export class ListaUsuarioComponent implements OnInit {
     this.findAll(this.page, this.count);
   }
 
-  edit(id: string){
+  editar(id: string){
     this.router.navigate(['/novo-usuario', id]);
   }
 
+  selecionaExcluir(usuario: Usuario){
+    this.usuarioSelecionado = usuario;
+    console.log("***chamadoSelecionado", this.usuarioSelecionado);
+  }
+
   delete(id: string){
-    this.dialogService.confirm('Confirma a exclusão deste Usuário ?')
-      .then((podeDeletar: boolean) => {
-        if(podeDeletar){
           this.message = {};
           this.usuarioSerice.delete(id).subscribe((responseApi: ResponseApi) => {
             this.showMessage({
@@ -53,8 +57,6 @@ export class ListaUsuarioComponent implements OnInit {
               text: err['error']['errors'][0]
             });
           });
-        }
-      })
   }
 
   findAll(page: number, count: number){

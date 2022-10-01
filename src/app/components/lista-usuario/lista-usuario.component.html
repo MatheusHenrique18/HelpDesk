@@ -18,20 +18,59 @@
                     <tr *ngFor="let usuario of listaUsuarios" style="height: 45px;">
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.perfil }}</td>
-                        <td><button class="btn btn-primary" (click)="edit(usuario.id)">Editar</button></td>
-                        <td><button class="btn btn-danger" (click)="delete(usuario.id)">Excluir</button></td>
+                        <td>
+                            <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Editar" style="cursor: pointer;" (click)="editar(usuario.id)"></i>
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-lg" aria-hidden="true" data-bs-toggle="tooltip" title="Excluir" style="cursor: pointer;" 
+                                        data-toggle="modal" data-target="#modalExclusaoUsuario" (click)="selecionaExcluir(usuario)"></i>
+                        </td>
                     </tr>
                 </table>
             </div>
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="" (click)="setPreviousPage($event)"> << </a></li>
+                    <li><a href="" (click)="setPreviousPage($event)"> « </a></li>
                     <li *ngFor="let p of pages; let i=index">
                         <a [ngClass]="{'pagination-focus' : i == page}" href="" (click)="setPage(i, $event)">{{ i+1 }}</a>
                     </li>
-                    <li><a href="" (click)="setNextPage($event)"> >> </a></li>
+                    <li><a href="" (click)="setNextPage($event)"> » </a></li>
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalExclusaoUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-exclamation-circle fa-lg"
+                            aria-hidden="true"></i>&nbsp; Atenção</h4>
+                </div>
+                <div class="modal-body">
+
+                    <h5>Confirma a exclusão do seguinte Usuario ?</h5>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6"><p><b>Email: </b>{{ usuarioSelecionado?.email }}</p></div>
+                        <div class="col-md-6"><p><b>Perfil: </b>{{ usuarioSelecionado?.perfil }}</p></div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fa fa-times" aria-hidden="true"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="delete(usuarioSelecionado.id)" data-dismiss="modal">
+                        <i class="fa fa-check" aria-hidden="true"></i> Confirmar
+                    </button>
+                </div>
+            </div>
     </div>
 </div>
