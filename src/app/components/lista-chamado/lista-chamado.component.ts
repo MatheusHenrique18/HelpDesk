@@ -73,7 +73,7 @@ export class ListaChamadoComponent implements OnInit {
   }
 
   editar(id: string){
-    this.router.navigate(['/novo-chamado', id]);
+    this.router.navigate(['/edita-chamado', id]);
   }
 
   detalhar(id: string){

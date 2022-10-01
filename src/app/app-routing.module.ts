@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'novo-usuario/:id', component: NovoUsuarioComponent, canActivate: [AuthGuard]},
   {path: 'lista-usuario', component: ListaUsuarioComponent, canActivate: [AuthGuard]},
   {path: 'novo-chamado', component: NovoChamadoComponent, canActivate: [AuthGuard]},
-  {path: 'novo-chamado/:id', component: NovoChamadoComponent, canActivate: [AuthGuard]},
+  {path: 'edita-chamado/:id', component: NovoChamadoComponent, canActivate: [AuthGuard]},
   {path: 'lista-chamado', component: ListaChamadoComponent, canActivate: [AuthGuard]},
   {path: 'detalha-chamado/:id', component: DetalhaChamadoComponent, canActivate: [AuthGuard]},
   {path: 'contadores', component: ContadoresComponent, canActivate: [AuthGuard]}
